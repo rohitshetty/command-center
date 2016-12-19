@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>rohlabs</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+	<link rel="stylesheet" href="/assests/app.css">
+	<link rel="stylesheet" href="/stylesheets/mdpicker.min.css">
+	<link rel="manifest" href="/javascripts/libs/manifest.json">
+	<script type="text/javascript" src="/javascripts/libs/angular.min.js"></script>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+	<script src="/javascripts/libs/moment.js"></script>
+
+	<script src="/javascripts/libs/mdpicker.min.js"></script>
+
+
+	<script type="text/javascript" src="/javascripts/devices/devices.app.js"></script>
+
+	<script type="text/javascript" src="/javascripts/devices/controllers/devices.controllers.js"></script>
+	<script type="text/javascript" src="/javascripts/devices/directives/devices.directives.js"></script>
+	<script type="text/javascript" src="/javascripts/devices/devices.app.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+</head>
+<body ng-cloak layout="column" ng-app="devices" ng-controller="dashboardController">
+	<md-toolbar layout="row" class="md-toolbar-tool">
+		<md-button class="menu md-icon-button" hide-gt-sm ng-click="toggleSideNav()"
+	                  aria-label="Show Device List">
+	         <md-icon md-svg-icon="/assests/svg/menu.svg"></md-icon>
+	   </md-button>
+		<h3>eurekaControl</h3>
+	</md-toolbar>
+
+	<div flex layout="row">
+		<md-sidenav class="md-whiteframe-4dp" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" ng-click="toggleSideNav()">
+			<md-list>
+				<md-list-item class="md-2-line" ng-repeat="device in deviceList" ng-click="deviceSelected(device)">
+					<md-list-item-text ng-class="{'selected': device === selectedDevice}">
+						{{device}}
+					</md-list-item-text>
+				</md-list-item>
+			</md-list>
+		</md-sidenav>
+
+		<md-content flex>
+			<div ng-repeat="device in deviceList">
+				<div ng-if="selectedDevice === device">
+					<device-dashboard device="{{device}}">
+					</device-dashboard>
+				</div>
+			<div>
+
+		</md-content>
+
+	</div>
+</body>
+</html>

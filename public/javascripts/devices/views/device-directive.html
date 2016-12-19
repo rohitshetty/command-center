@@ -1,0 +1,19 @@
+<div class="inset">
+	<h2> Manual control </h2>
+
+	<md-switch ng-model="state" ng-true-value="'on'" ng-false-value="'off'" ng-change="statusToggle()">
+		<h1>{{device}} {{state}} </h1>
+	</md-switch>
+
+	<md-divider></md-divider>
+
+	<h2> Schedule {{device}} </h2>
+
+	<mdp-time-picker mdp-placeholder="Pick time" ng-model="scheduledTime"> </mdp-time-picker>
+
+	<md-switch ng-model="scheduledState" ng-true-value="'on'" ng-false-value="'off'">
+		Schedule {{device}} {{state}}
+	</md-switch>
+
+	<md-button class="md-raised" ng-click="scheduleDevice()">Schedule {{device}} action</md-button>
+</div>
