@@ -1,10 +1,14 @@
 'use strict';
 
 (function () {
-	angular.module('devices.controllers',['ngMaterial','mdPickers',"ngAnimate",
-    "ngAria",
-    "ngMessages",
-    "mdPickers"]);
+	angular.module('devices.controllers',[
+		'ngMaterial',
+		'mdPickers',
+		'ngAnimate',
+    	'ngAria',
+    	'ngMessages',
+    	'mdPickers'
+	]);
 })();
 
 angular
