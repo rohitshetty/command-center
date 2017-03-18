@@ -5,9 +5,9 @@
 		'ngMaterial',
 		'mdPickers',
 		'ngAnimate',
-    	'ngAria',
-    	'ngMessages',
-    	'mdPickers'
+		'ngAria',
+    		'ngMessages',
+    		'mdPickers'
 	]);
 })();
 
@@ -39,7 +39,6 @@ angular
 			var url = '/devices/' + $scope.device;
 			var time = $scope.scheduledTime.getHours() + ":" + $scope.scheduledTime.getMinutes();
 
-			console.log(time);
 			$http
 				.post(url, {
 					scheduler: true,
@@ -47,21 +46,18 @@ angular
 					status: $scope.scheduledState
 				})
 				.then(function (res) {
-					console.log(res.data)
 					$mdToast.showSimple($scope.device + ' Scheduled  ' + $scope.scheduledState + ' for ' + $scope.scheduledTime.toLocaleTimeString());
 				});
 		}
 
 		$scope.statusToggle = function () {
 			var url = '/devices/'+$scope.device;
-			console.log(url);
 			$http
 				.post(url, {
 					status: $scope.state
 				})
 				.then(function (res) {
 					$mdToast.showSimple($scope.device + ' turned ' + $scope.state);
-					console.log(res.data);
 				});
 		}
 	}]);
